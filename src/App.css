@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
