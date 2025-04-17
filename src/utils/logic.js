@@ -11,5 +11,8 @@ export const checkWinner = (boardToCheck) => {
       return boardToCheck[a];
     }
   }
+  if (boardToCheck.every((square) => square !== null)) {
+    return false;
+  }
   return null;
 };
