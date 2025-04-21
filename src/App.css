@@ -87,3 +87,11 @@ main {
   gap: 20px;
   font-size: 30px;
 }
+
+.reset-button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
