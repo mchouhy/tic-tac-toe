@@ -6,6 +6,7 @@ import { TURNS } from "./utils/constants";
 import confetti from "canvas-confetti";
 import { checkWinner } from "./utils/logic";
 import Board from "./components/Board";
+import EndGameModal from "./components/EndGameModal";
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -14,14 +15,11 @@ function App() {
 
   const updateBoard = (index) => {
     if (board[index] || winner) return;
-    // Handle turns
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
-    // Handle board selections
     const newBoard = [...board];
     newBoard[index] = turn;
     setBoard(newBoard);
-    // Check for winner
     const newWinner = checkWinner(newBoard);
     if (newWinner) confetti();
     setWinner(newWinner);
@@ -48,18 +46,11 @@ function App() {
             {TURNS.O}
           </Square>
         </section>
-        {winner !== null && (
-          <section className="winner">
-            <div>
-              <span className="text">
-                {winner === false ? "It's a tie!" : `${winner} wins!`}
-                <button className="reset-button" onClick={resetGame}>
-                  Reset
-                </button>
-              </span>
-            </div>
-          </section>
-        )}
+        <section className="winner">
+          {winner !== null && (
+            <EndGameModal winner={winner} resetGame={resetGame} />
+          )}
+        </section>
       </main>
     </>
   );
