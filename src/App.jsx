@@ -46,11 +46,9 @@ function App() {
             {TURNS.O}
           </Square>
         </section>
-        <section className="winner">
-          {winner !== null && (
-            <EndGameModal winner={winner} resetGame={resetGame} />
-          )}
-        </section>
+        {winner !== null && (
+          <EndGameModal winner={winner} resetGame={resetGame} />
+        )}
       </main>
     </>
   );
